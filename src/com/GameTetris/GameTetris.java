@@ -80,7 +80,7 @@ public class GameTetris {
         frame = new JFrame(name);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(size_width * size_brick + size_DX, size_height * size_brick + size_DY);
-        frame.setLocationRelativeTo(null); //установил окно по середине
+        frame.setLocationRelativeTo(null); //установил окно в центре экрана
         frame.setResizable(false);
         playing_field.setBackground(Color.black); // определяю цвет фона
         frame.addKeyListener(new KeyAdapter() {
@@ -133,7 +133,7 @@ public class GameTetris {
         private ArrayList<Block> figure = new ArrayList<Block>(); //массив списков
         private int[][] turn_shape = new int[4][4];
         private int type, size, color; //тип, размер матрицы фигуры, цвет.
-        private int x = 3, y = 0; // starting left up corner
+        private int x = 3, y = 0; // начальное положение фигуры
 
         Figure() {
             type = random.nextInt(SHAPES.length);
@@ -189,7 +189,7 @@ public class GameTetris {
                     }
             return false;
         }
-        void createFromShape(){ //цикл, проходит по массиву shape. Основываясь на массиве turn_shape строит фигуру
+        void createFromShape(){ //цикл, проходит по массиву turn_shape. Основываясь на массиве turn_shape строит фигуру
             for (int x = 0; x < size; x++)
                 for (int y = 0; y < size; y++)
                     if (turn_shape[y][x] == 1) figure.add(new Block(x + this.x, y + this.y));
